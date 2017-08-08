@@ -1,0 +1,2 @@
+ffmpeg -loop 1 -i python.png -i test.wav -c:v libx264 -c:a aac -shortest -preset veryslow out2.mp4
+^maybe don't need the -preset part.

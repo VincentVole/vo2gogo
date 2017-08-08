@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+	{% load static %}
+    <link href="{% static 'myapp/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'myapp/css/color.css' %}" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid" style="margin: auto; width: 50%; text-align: center">
+		<h1>Welcome to vo2gogo</h1>
+		<h2>Audio to Video</h2>
+		<h3>Easy as 1 - 2 - 3</h3>
+		<h3>Step 2:</h3>
+		<form action="">
+			<label for="text">Custom Text:</label>
+			<textarea name="text" id="text" cols="30" rows="10"></textarea>
+			
+			<div>
+				<label for="">Choose a background color:</label>
+				<ul class="color">
+					<li><input type="radio" name="color" id="color1"><label for="color1" id="label1"></label></li>
+					<li><input type="radio" name="color" id="color2"><label for="color2" id="label2"></label></li>
+					<li><input type="radio" name="color" id="color3"><label for="color3" id="label3"></label></li>
+					<li><input type="radio" name="color" id="color4"><label for="color4" id="label4"></label></li>
+				</ul>
+			</div>
+			
+			<div style="clear: left">
+				<label for="audio">Select an audio clip:</label>
+				<input type="file" name="audio" id="audio">
+			</div>
+			<button>Upload</button>
+		</form>
+			
+	</div>
+</body>
+</html>

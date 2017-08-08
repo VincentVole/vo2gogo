@@ -1,0 +1,76 @@
+.color {
+     list-style-type:none;
+     margin:25px 0 0 0;
+     padding:0;
+}
+
+.color li {
+     float:left;
+     margin:0 5px 0 0;
+    width:100px;
+    height:40px;
+    position:relative;
+}
+
+.color label, .color input {
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.color input[type="radio"] {
+    opacity:0.01;
+    z-index:100;
+}
+
+
+
+#label1{
+    background-color: white;
+}
+#label2{
+    background-color: red;
+}
+#label3{
+    background-color: green;
+}
+#label4{
+    background-color: purple;
+}
+
+
+
+/*.color input[type="radio"]:checked + label{
+    background: yellow;
+}*/
+
+.color input[type="radio"]:checked + #label1{
+    border:2.5px solid lightblue; 
+}
+.color input[type="radio"]:checked + #label2{
+    border:2.5px solid lightblue; 
+}
+.color input[type="radio"]:checked + #label3{
+    border:2.5px solid lightblue; 
+}
+.color input[type="radio"]:checked + #label4{
+    border:2.5px solid lightblue; 
+}
+
+
+
+
+.color label {
+     padding:5px;
+     border:1px solid #DDD; 
+     border-radius: 10px;
+     cursor:pointer;
+     z-index:90;
+}
+
+.color label:hover {
+     background:#DDD;
+}

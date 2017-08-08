@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        {% load static %}
+        <link href="{% static 'myapp/css/bootstrap.min.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container-fluid" style="margin: auto; width: 50%; text-align: center">
+            <h1>Welcome to vo2gogo</h1>
+            <h2>Audio to Video</h2>
+            <h3>Easy as 1 - 2 - 3</h3>
+            <h3>Step 2:</h3>
+            
+            <!-- Upload form. Note enctype attribute! -->
+            <form action="{% url "list" %}" method="post" enctype="multipart/form-data" style="margin: auto; width: 30%;">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+
+                {{ form.docfile.label_tag }} {{ form.docfile.help_text }}
+
+               
+                    {{ form.docfile.errors }}
+                    {{ form.docfile }}
+                
+
+                {{ form.non_field_errors }}
+
+                {{ form.docfile_2.label_tag }} {{ form.docfile_2.help_text }}
+
+               
+                    {{ form.docfile_2.errors }}
+                    {{ form.docfile_2 }}
+                
+
+               <input type="submit" value="Upload"/>
+            </form>
+
+            <!-- List of uploaded documents -->
+           <!--  {% if documents %}
+                <ul>
+                    {% for document in documents %}
+                        <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No documents.</p>
+            {% endif %} -->
+        </div>
+    </body>
+
+</html>
