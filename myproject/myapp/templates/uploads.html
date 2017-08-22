@@ -16,15 +16,17 @@
 		<h3>Step 3:</h3>
 		<h3>Download your file below</h3>
 		<!-- List of uploaded documents -->
-        {% if documents %}
+       <!--  {% if documents %}
             <ul>
                 {% for document in documents %}
-                    <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+                    <li><a href="{{ document.docfile.url }}" download>{{ document.docfile.name }}</a></li>
                 {% endfor %}
             </ul>
         {% else %}
             <p>No documents.</p>
-        {% endif %}
+        {% endif %} -->
+
+        <a href="{{newFile}}" download>{{name}}</a>
 	</div>
 </body>
 </html>
