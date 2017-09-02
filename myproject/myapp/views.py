@@ -12,6 +12,10 @@ from collections import OrderedDict
 from image_utils import ImageText
 from PIL import Image
 
+from tasks import add
+from tasks import tax
+from tasks import merge
+
 import ffmpy
 import os
 
@@ -56,24 +60,26 @@ def list(request):
                 canvas.save('.' + img.docfile.url)
 
 
-            ff = ffmpy.FFmpeg(
-                global_options='-loop 1',
-                inputs=OrderedDict([('./media/' + img.docfile.name, None), ('./media/' + audio.docfile.name, None)]),
-                # {
-                #     './media/' + img.docfile.name: None,
-                #     './media/' + audio.docfile.name: None
-                # },
+            # ff = ffmpy.FFmpeg(
+            #     global_options='-loop 1',
+            #     inputs=OrderedDict([('./media/' + img.docfile.name, None), ('./media/' + audio.docfile.name, None)]),
+            #                         # {
+            #                         #     './media/' + img.docfile.name: None,
+            #                         #     './media/' + audio.docfile.name: None
+            #                         # },
 
 
 
-                # outputs={'../../media/files/' + audio.docfile.name + '.mp4': '-c:v libx264 -c:a aac -shortest'}
-                # outputs={'./media/output/test_result.mp4': '-c:v libx264 -c:a aac -shortest'}
-                outputs={'.' + newFile: '-c:v libx264 -c:a aac -shortest'}
-            )
+            #                         # outputs={'../../media/files/' + audio.docfile.name + '.mp4': '-c:v libx264 -c:a aac -shortest'}
+            #                         # outputs={'./media/output/test_result.mp4': '-c:v libx264 -c:a aac -shortest'}
+            #     outputs={'.' + newFile: '-c:v libx264 -c:a aac -shortest'}
+            # )
 
-            print ff.cmd
+            # print ff.cmd
 
-            ff.run()
+            # ff.run()
+
+            merge.delay('./media/' + img.docfile.name, './media/' + audio.docfile.name, '.' + newFile)
 
             request.session['newFile'] = newFile
             request.session['newFileName'] = audioBase + '.mp4'
@@ -137,13 +143,15 @@ def custom(request):
 
         img.save('./media/input/' + audioBase + '_img.png')
 
-        ff = ffmpy.FFmpeg(
-            global_options='-loop 1',
-            inputs=OrderedDict([('./media/input/' + audioBase + '_img.png', None), ('./media/' + audio.docfile.name, None)]),
-            outputs={'.' + newFile: '-c:v libx264 -c:a aac -shortest'}
-        )
+        # ff = ffmpy.FFmpeg(
+        #     global_options='-loop 1',
+        #     inputs=OrderedDict([('./media/input/' + audioBase + '_img.png', None), ('./media/' + audio.docfile.name, None)]),
+        #     outputs={'.' + newFile: '-c:v libx264 -c:a aac -shortest'}
+        # )
 
-        ff.run()
+        # ff.run()
+
+        merge.delay('./media/input/' + audioBase + '_img.png', './media/' + audio.docfile.name, '.' + newFile)
 
         request.session['newFile'] = newFile
         request.session['newFileName'] = audioBase + '.mp4'
@@ -152,4 +160,11 @@ def custom(request):
         return HttpResponseRedirect('/myapp/uploads/')
 
     else:
+        # tax.delay()
+        # tax.delay()
+        # add.delay(7,8)
+        # add.delay(7,8)
+        # merge.delay('python1.png', 'custom.wav', 'output.mp4')
+        # add.delay(7,8)
+        # add.delay(7,8)
         return render(request, 'custom_input.html')
